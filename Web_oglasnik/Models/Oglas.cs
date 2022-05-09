@@ -11,20 +11,24 @@ namespace Web_oglasnik.Models
     public class Oglas
     {
 
-            [Key]
-            [Display(Name = "ID oglasa")]
-            public int ID { get; set; }
+        [Key]
+        [Display(Name = "ID oglasa")]
+        public int ID { get; set; }
 
-            [Display(Name = "Naslov")]
-            public string Naslov { get; set; }
+        [Display(Name = "Naslov")]
+        public string Naslov { get; set; }
 
-            [Column("godiste")]
-            [Display(Name = "Godište automobila")]
-            public float Godiste { get; set; }
+        [Column("godiste")]
+        [Display(Name = "Godište automobila")]
+        public float Godiste { get; set; }
 
-            [Column("stanje")]
-            [Display(Name = "Stanje automobila")]
-            public string Stanje { get; set; }
+        [Column("stanje")]
+        [Display(Name = "Stanje automobila")]
+        public string Stanje { get; set; }
+
+        [Column("cijena")]
+        [Display(Name = "Cijena automobila")]
+        public string Cijena { get; set; }
 
     }
 }
