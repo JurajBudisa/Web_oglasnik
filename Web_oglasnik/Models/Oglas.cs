@@ -27,7 +27,7 @@ namespace Web_oglasnik.Models
         public string Stanje { get; set; }
 
         [Column("cijena")]
-        [Display(Name = "cijena automobila")]
+        [Display(Name = "Cijena automobila")]
         public string Cijena { get; set; }
 
     }
