@@ -7,6 +7,7 @@
 @{ if (ViewBag.Novi)
     {
         <h2>Kreiranje novog oglasa</h2>
+
     }
     else
     {
@@ -18,7 +19,6 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "Ispravite Podatke");
-
     if (!ViewBag.Novi)
     {
         <div class="form-group">
