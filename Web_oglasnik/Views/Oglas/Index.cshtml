@@ -14,6 +14,11 @@
     </div>
     <div class="col-md-6">
         <h2>Predaj oglas</h2>
+        @if (Session["ID"] != null) {
         <p>@Html.ActionLink("Predaj oglas", "Azuriraj", "Oglas", null, new { @class = "btn btn-default" })</p>
+        }
+        else {
+        <p>@Html.ActionLink("Predaj oglas", "Login", "Korisnik", null, new { @class = "btn btn-default" })</p>
+        }
     </div>
 </div>

@@ -43,6 +43,12 @@
         @Model.Cijena
     </div>
 </div>
+
+
 <br />
 
 @Html.ActionLink("Povratak na oglase", "Popis", "Oglas", null, new { @class = "btn btn-primary btn-sm" })
+@Html.ActionLink("Ažuriraj", "Azuriraj", new { id = Model.ID }, new { @class = "btn btn-warning btn-sm" })
+
+
+@Html.ActionLink("Izbriši", "Brisi", new { id = Model.ID }, new { @class = "btn btn-danger btn-sm" })

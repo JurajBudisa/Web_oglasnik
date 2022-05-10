@@ -52,8 +52,6 @@ else
                 <td>@oglas.ID</td>
                 <td>@oglas.Naslov</td>
                 <td>@Html.ActionLink("Info", "Detalji", new { id = oglas.ID }, new { @class = "btn btn-info btn-sm" })</td>
-                <td>@Html.ActionLink("Ažuriraj", "Azuriraj", new { id = oglas.ID }, new { @class = "btn btn-warning btn-sm" })</td>
-                <td>@Html.ActionLink("Izbriši", "Brisi", new { id = oglas.ID }, new { @class = "btn btn-danger btn-sm" })</td>
             </tr>
         }
     </table>

@@ -30,5 +30,9 @@ namespace Web_oglasnik.Models
         [Display(Name = "Cijena automobila")]
         public string Cijena { get; set; }
 
+        [Column("id_korisnika")]
+        [Display(Name = "ID korisnika")]
+        public int ID_Korisnika { get; set; }
+
     }
 }
