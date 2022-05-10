@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
+
 @{ if (ViewBag.Novi)
     {
         <h2>Kreiranje novog oglasa</h2>
-
     }
     else
     {
@@ -19,7 +19,15 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "Ispravite Podatke");
-    if (!ViewBag.Novi)
+
+
+    if (ViewBag.Novi)
+    {
+        int id = Convert.ToInt32(Session["ID"]);
+        Model.ID_Korisnika = id;
+        @Html.HiddenFor(model => model.ID_Korisnika);
+    }
+    else
     {
         <div class="form-group">
             @Html.LabelFor(model => model.ID, new { @class = "col-sm-2 control-label" })
@@ -27,6 +35,7 @@
                 @Html.TextBoxFor(model => model.ID, new { disabled = true, @class = "from-control" })
             </div>
         </div>
+
     }
     <div class="form-group">
         @Html.LabelFor(model => model.Naslov, new { @class = "col-sm-2 control-label" })
