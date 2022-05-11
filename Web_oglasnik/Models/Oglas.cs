@@ -33,6 +33,7 @@ namespace Web_oglasnik.Models
         [Display(Name = "Cijena automobila")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C}")]
+        [Required(ErrorMessage = "{0} je obavezna")]
         public string Cijena { get; set; }
 
         [Column("id_korisnika")]

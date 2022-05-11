@@ -7,10 +7,20 @@
 
 <h2>Oglasi</h2>
 
-<a href="@Url.Action("Azuriraj", "Oglas")" class="btn btn-success">
-    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-    Predaj oglas
-</a>
+@if (Session["ID"] != null)
+{
+    <a href="@Url.Action("Azuriraj", "Oglas")" class="btn btn-success">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        Predaj oglas
+    </a>
+}
+else
+{
+    <a href="@Url.Action("Login", "Korisnik")" class="btn btn-success">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        Predaj oglas
+    </a>
+}
 <br />
 <br />
 
@@ -40,35 +50,35 @@
 }
 else
 {
-<table>
-    @foreach (Oglas oglas in Model)
-    {
-        <tr>
-            <td><h3>@Html.ActionLink(oglas.Naslov, "Detalji", new { id = oglas.ID })</h3></td>
-        </tr>
+    <table>
+        @foreach (Oglas oglas in Model)
+        {
+            <tr>
+                <td><h3>@Html.ActionLink(oglas.Naslov, "Detalji", new { id = oglas.ID })</h3></td>
+            </tr>
 
-        <tr>
-            <td>Stanje:</td>
-            @if (oglas.Stanje == "N")
-            {
-                <td>Novo</td>
-            }
-            else
-            {
-                <td>Rabljeno</td>
-            }
-        </tr>
+            <tr>
+                <td><strong>Stanje:</strong></td>
+                @if (oglas.Stanje == "N")
+                {
+                    <td>Novo</td>
+                }
+                else
+                {
+                    <td>Rabljeno</td>
+                }
+            </tr>
 
-        <tr>
-            <td>Godište:</td>
-            <td>@oglas.Godiste.</td>
-        </tr>
+            <tr>
+                <td><strong>Godište:</strong></td>
+                <td>@oglas.Godiste.</td>
+            </tr>
 
-        <tr>
-            <td>Cijena:</td>
-            <td>@oglas.Cijena kn </td>
-        </tr>
-    }
-</table>
+            <tr>
+                <td><strong>Cijena:</strong></td>
+                <td>@oglas.Cijena kn </td>
+            </tr>
+        }
+    </table>
 }
 
