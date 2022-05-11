@@ -16,23 +16,24 @@ namespace Web_oglasnik.Models
         public int ID { get; set; }
 
         [Column("ime")]
-        [Display(Name = "Ime korisnika")]
+        [Display(Name = "Ime")]
         public string Ime { get; set; }
 
         [Column("prezime")]
-        [Display(Name = "Prezime korisnika")]
+        [Display(Name = "Prezime")]
         public string Prezime { get; set; }
 
         [Column("email")]
-        [Display(Name = "Email korisnika")]
+        [Display(Name = "Email")]
+        [EmailAddress(ErrorMessage = "Neispravna email adresa")]
         public string Email { get; set; }
 
         [Column("username")]
-        [Display(Name = "Username korisnika")]
+        [Display(Name = "Korisničko ime")]
         public string Username { get; set; }
 
         [Column("lozinka")]
-        [Display(Name = "Lozinka korisnika")]
+        [Display(Name = "Lozinka")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

@@ -16,18 +16,23 @@ namespace Web_oglasnik.Models
         public int ID { get; set; }
 
         [Display(Name = "Naslov")]
+        [Required(ErrorMessage = "{0} je obavezan")]
         public string Naslov { get; set; }
 
         [Column("godiste")]
         [Display(Name = "Godište automobila")]
+        [Range(1900, 2022, ErrorMessage = "Godište mora biti između {1} i {2}")]
         public float Godiste { get; set; }
 
         [Column("stanje")]
         [Display(Name = "Stanje automobila")]
+        [Required(ErrorMessage = "{0} je obavezno")]
         public string Stanje { get; set; }
 
         [Column("cijena")]
         [Display(Name = "Cijena automobila")]
+        [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public string Cijena { get; set; }
 
         [Column("id_korisnika")]

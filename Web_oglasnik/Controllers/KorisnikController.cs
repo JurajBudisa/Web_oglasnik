@@ -33,7 +33,7 @@ namespace Web_oglasnik.Controllers
                 ModelState.Clear();
                 ViewBag.Message = korisnik.Ime + " " + korisnik.Prezime + " uspješno registriran.";
             }
-            return View();
+            return View("~/Views/Oglas/Index.cshtml");
         }
 
         public ActionResult Login()
