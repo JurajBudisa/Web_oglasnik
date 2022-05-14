@@ -18,6 +18,8 @@
 
 <h2>@Model.Naslov</h2>
 
+<hr />
+
 <div class="row">
     <div class="col-md-2">
         <strong>Stanje:</strong>
@@ -40,7 +42,18 @@
         <strong>Cijena:</strong>
     </div>
     <div class="col-md-10">
-        @Model.Cijena kn
+        @String.Format("{0:N0}", Model.Cijena) kn
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Opis:</strong>
+    </div>
+    <div class="col-md-10">
+        <pre style="white-space: pre-wrap">@Model.Opis</pre>
     </div>
 </div>
 

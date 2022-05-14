@@ -24,18 +24,18 @@
     <hr />
     @if (ViewBag.Novi)
     {
-    int id = Convert.ToInt32(Session["ID"]);
-    Model.ID_Korisnika = id;
-    @Html.HiddenFor(model => model.ID_Korisnika);
+        int id = Convert.ToInt32(Session["ID"]);
+        Model.ID_Korisnika = id;
+        @Html.HiddenFor(model => model.ID_Korisnika);
     }
     else
     {
-    <div class="form-group">
-        @Html.LabelFor(model => model.ID, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.ID, new { disabled = true, @class = "form-control" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ID, new { disabled = true, @class = "form-control" })
+            </div>
         </div>
-    </div>
 
     }
     <div class="form-group">
@@ -73,6 +73,14 @@
         <div class="col-md-10">
             @Html.TextBoxFor(model => model.Cijena, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Cijena, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Opis, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Opis, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Opis, "", new { @class = "text-danger" })
         </div>
     </div>
 

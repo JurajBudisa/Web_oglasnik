@@ -7,6 +7,8 @@
 
 <h2>Oglasi</h2>
 
+<hr />
+
 @if (Session["ID"] != null)
 {
     <a href="@Url.Action("Azuriraj", "Oglas")" class="btn btn-success">
@@ -76,7 +78,7 @@ else
 
             <tr>
                 <td><strong>Cijena:</strong></td>
-                <td>@oglas.Cijena kn </td>
+                <td>@String.Format("{0:N0}", oglas.Cijena) kn </td>
             </tr>
         }
     </table>
