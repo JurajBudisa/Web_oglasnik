@@ -42,5 +42,9 @@ namespace Web_oglasnik.Models
         [Display(Name = "ID korisnika")]
         public int ID_Korisnika { get; set; }
 
+        [Column("username")]
+        [Display(Name = "Korisničko ime")]
+        public string Username { get; set; }
+
     }
 }

@@ -28,6 +28,11 @@ namespace Web_oglasnik.Models
         [EmailAddress(ErrorMessage = "Neispravna email adresa")]
         public string Email { get; set; }
 
+        [Column("mobitel")]
+        [Display(Name = "Broj mobitela")]
+        [StringLength(10, ErrorMessage = "Neispravan broj mobitela", MinimumLength = 10)] 
+        public string Mobitel { get; set; }
+
         [Column("username")]
         [Display(Name = "Korisničko ime")]
         public string Username { get; set; }

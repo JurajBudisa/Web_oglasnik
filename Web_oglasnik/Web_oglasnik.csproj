@@ -285,6 +285,8 @@
     <Content Include="Views\Oglas\BrisiStatus.cshtml" />
     <Content Include="Views\Korisnik\Login.cshtml" />
     <Content Include="Views\Korisnik\Register.cshtml" />
+    <Content Include="Views\Korisnik\Detalji.cshtml" />
+    <Content Include="Views\Korisnik\Azuriraj.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

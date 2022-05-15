@@ -20,7 +20,7 @@
             </div>
             @if (Session["ID"] != null)
             {
-                <div class="navbar-collapse collapse">
+                <div class="navbar-collapse collapse" style="height: 100%">
                     <ul class="nav navbar-nav navbar-left">
                         <li>@Html.ActionLink("Početna", "Index", "Home")</li>
                         <li>@Html.ActionLink("Oglasi", "Popis", "Oglas")</li>
@@ -28,6 +28,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>@Html.ActionLink("Predaj oglas", "Azuriraj", "Oglas")</li>
+                        <li>@Html.ActionLink("Postavke", "Azuriraj", "Korisnik", new { id = Session["ID"] }, null)</li>
                         <li>@Html.ActionLink("Odjava", "Odjava", "Korisnik")</li>
                     </ul>
                 </div>

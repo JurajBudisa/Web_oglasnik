@@ -1,0 +1,82 @@
+﻿@using Web_oglasnik.Models
+@model Korisnik
+@{
+    ViewBag.Title = "Detalji";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>@Model.Username</h2>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Ime i prezime:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.Ime @Model.Prezime
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Email:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.Email
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Broj mobitela:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.Mobitel
+    </div>
+</div>
+
+
+@*
+<hr />
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Oglasi</strong>
+    </div>
+    <div class="col-md-10">
+        <table>
+            @foreach (Oglas oglas in model)
+            {
+                <tr>
+                    <td><h3>@Html.ActionLink(oglas.Naslov, "Detalji", new { id = oglas.ID })</h3></td>
+                </tr>
+
+                <tr>
+                    <td><strong>Stanje:</strong></td>
+                    @if (oglas.Stanje == "N")
+                    {
+                        <td>Novo</td>
+                    }
+                    else
+                    {
+                        <td>Rabljeno</td>
+                    }
+                </tr>
+
+                <tr>
+                    <td><strong>Godište:</strong></td>
+                    <td>@oglas.Godiste.</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Cijena:</strong></td>
+                    <td>@String.Format("{0:N0}", oglas.Cijena) kn </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<br />*@
