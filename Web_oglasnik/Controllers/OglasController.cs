@@ -19,7 +19,7 @@ namespace Web_oglasnik.Controllers
             return View();
         }
 
-        public ActionResult Popis(string naslov, string stanje)
+        public ActionResult Popis(string naslov, string stanje, string marka)
         {
             var oglasi = bazaPOdataka.PopisOglasa.ToList();
 
@@ -27,6 +27,8 @@ namespace Web_oglasnik.Controllers
                 oglasi = oglasi.Where(x => x.Naslov.ToUpper().Contains(naslov.ToUpper())).ToList();
             if (!String.IsNullOrWhiteSpace(stanje))
                 oglasi = oglasi.Where(x => x.Stanje == stanje).ToList();
+            if (!String.IsNullOrWhiteSpace(marka))
+                oglasi = oglasi.Where(x => x.Marka.ToString() == marka).ToList();
             return View(oglasi);
         }
 

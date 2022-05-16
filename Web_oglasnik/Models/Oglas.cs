@@ -21,7 +21,7 @@ namespace Web_oglasnik.Models
 
         [Display(Name = "Marka")]
         [Column("marka")]
-        public Marke Marka { get; set; }
+        public Marke? Marka { get; set; }
 
         [Column("godiste")]
         [Display(Name = "Godište automobila")]
