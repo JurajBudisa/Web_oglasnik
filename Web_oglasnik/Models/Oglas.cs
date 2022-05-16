@@ -21,6 +21,7 @@ namespace Web_oglasnik.Models
 
         [Display(Name = "Marka")]
         [Column("marka")]
+        [Required(ErrorMessage = "{0} je obavezna")]
         public Marke? Marka { get; set; }
 
         [Column("godiste")]
@@ -40,6 +41,7 @@ namespace Web_oglasnik.Models
 
         [Column("opis")]
         [Display(Name = "Opis oglasa")]
+        [Required(ErrorMessage = "{0} je obavezan")]
         public string Opis { get; set; }
 
         [Column("id_korisnika")]

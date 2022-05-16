@@ -30,7 +30,7 @@ namespace Web_oglasnik.Models
 
         [Column("mobitel")]
         [Display(Name = "Broj mobitela")]
-        [StringLength(10, ErrorMessage = "Neispravan broj mobitela", MinimumLength = 10)] 
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Neispravan broj mobitela")]
         public string Mobitel { get; set; }
 
         [Column("username")]

@@ -95,8 +95,8 @@
     if (id == Model.ID_Korisnika)
     {
         @Html.ActionLink("Povratak na oglase", "Popis", "Oglas", null, new { @class = "btn btn-primary btn-sm" })
-        @Html.ActionLink("Ažuriraj", "Azuriraj", new { id = Model.ID }, new { @class = "btn btn-warning btn-sm" })
-        @Html.ActionLink("Izbriši", "Brisi", new { id = Model.ID }, new { @class = "btn btn-danger btn-sm" })
+        @Html.ActionLink("Ažuriraj", "Azuriraj", new { id = Model.ID }, new { @class = "btn btn-warning btn-sm", style = "margin-left: 5px;" })
+        @Html.ActionLink("Izbriši", "Brisi", new { id = Model.ID }, new { @class = "btn btn-danger btn-sm", style = "margin-left: 5px;" })
     }
     else
     {
