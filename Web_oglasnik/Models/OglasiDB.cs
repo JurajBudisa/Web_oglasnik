@@ -21,7 +21,7 @@ namespace Web_oglasnik.Models
                 {
                     ID = 1,
                     Naslov = "auto",
-                    Godiste = 1991,
+                    Godiste = "1991",
                     Stanje = "R"
                 });
             }

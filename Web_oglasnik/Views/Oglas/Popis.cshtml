@@ -61,6 +61,11 @@ else
             </tr>
 
             <tr>
+                <td><strong>Marka:</strong></td>
+                <td>@oglas.Marka</td>
+            </tr>
+
+            <tr>
                 <td><strong>Stanje:</strong></td>
                 @if (oglas.Stanje == "N")
                 {
@@ -79,7 +84,7 @@ else
 
             <tr>
                 <td><strong>Cijena:</strong></td>
-                <td>@String.Format("{0:N0}", oglas.Cijena) kn </td>
+                <td>@String.Format("{0:N0}", Convert.ToDecimal(oglas.Cijena)) kn </td>
             </tr>
 
             <tr>

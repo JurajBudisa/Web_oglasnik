@@ -22,7 +22,7 @@
 
 <div class="row">
     <div class="col-md-2">
-        <strong>Marka automobila:</strong>
+        <strong>Marka:</strong>
     </div>
     <div class="col-md-10">
         @Model.Marka
@@ -52,7 +52,7 @@
         <strong>Cijena:</strong>
     </div>
     <div class="col-md-10">
-        @String.Format("{0:N0}", Model.Cijena) kn
+        @String.Format("{0:N0}", Convert.ToDecimal(Model.Cijena)) kn
     </div>
 </div>
 

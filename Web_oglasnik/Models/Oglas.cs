@@ -26,8 +26,9 @@ namespace Web_oglasnik.Models
 
         [Column("godiste")]
         [Display(Name = "Godište automobila")]
-        [Range(1900, 2022, ErrorMessage = "Godište mora biti između {1} i {2}")]
-        public float Godiste { get; set; }
+        [Range(1900, 2022, ErrorMessage = "{0} mora biti između {1} i {2}")]
+        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "{0} mora biti broj")]
+        public string Godiste { get; set; }
 
         [Column("stanje")]
         [Display(Name = "Stanje automobila")]
@@ -36,8 +37,10 @@ namespace Web_oglasnik.Models
 
         [Column("cijena")]
         [Display(Name = "Cijena automobila")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
         [Required(ErrorMessage = "{0} je obavezna")]
-        public int Cijena { get; set; }
+        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "{0} mora biti broj")]
+        public string Cijena { get; set; }
 
         [Column("opis")]
         [Display(Name = "Opis oglasa")]
