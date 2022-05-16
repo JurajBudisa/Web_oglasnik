@@ -7,8 +7,26 @@ namespace Web_oglasnik.Models
 {
     public enum Marke
     {
+        Audi,
+        BMW,
+        Citroen,
         Peugeot,
         Mazda,
-        Volkswagen
+        Volvo,
+        Chevrolet,
+        Fiat,
+        Kia,
+        Ford,
+        Porsche,
+        Suzuki,
+        Hyundai,
+        Nissan,
+        Volkswagen,
+        Mercedes,
+        Renault,
+        Škoda,
+        Mitsubishi,
+        Opel,
+        Toyota
     }
 }
