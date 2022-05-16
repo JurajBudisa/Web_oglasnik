@@ -237,6 +237,7 @@
     </Compile>
     <Compile Include="Models\BazaDbContext.cs" />
     <Compile Include="Models\Korisnik.cs" />
+    <Compile Include="Models\Marke.cs" />
     <Compile Include="Models\Oglas.cs" />
     <Compile Include="Models\OglasiDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

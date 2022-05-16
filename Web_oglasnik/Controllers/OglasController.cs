@@ -19,12 +19,12 @@ namespace Web_oglasnik.Controllers
             return View();
         }
 
-        public ActionResult Popis(string naziv, string stanje)
+        public ActionResult Popis(string naslov, string stanje)
         {
             var oglasi = bazaPOdataka.PopisOglasa.ToList();
 
-            if (!String.IsNullOrWhiteSpace(naziv))
-                oglasi = oglasi.Where(x => x.Naslov.ToUpper().Contains(naziv.ToUpper())).ToList();
+            if (!String.IsNullOrWhiteSpace(naslov))
+                oglasi = oglasi.Where(x => x.Naslov.ToUpper().Contains(naslov.ToUpper())).ToList();
             if (!String.IsNullOrWhiteSpace(stanje))
                 oglasi = oglasi.Where(x => x.Stanje == stanje).ToList();
             return View(oglasi);

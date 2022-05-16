@@ -19,6 +19,10 @@ namespace Web_oglasnik.Models
         [Required(ErrorMessage = "{0} je obavezan")]
         public string Naslov { get; set; }
 
+        [Display(Name = "Marka")]
+        [Column("marka")]
+        public Marke Marka { get; set; }
+
         [Column("godiste")]
         [Display(Name = "Godište automobila")]
         [Range(1900, 2022, ErrorMessage = "Godište mora biti između {1} i {2}")]

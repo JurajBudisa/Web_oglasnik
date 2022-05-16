@@ -29,6 +29,7 @@ else
 @using (Html.BeginForm("Popis", "Oglas", FormMethod.Get, new { @class = "form-inline" }))
 {
     @Html.TextBox("naziv", "", new { @class = "form-control", placeholder = "Naziv oglasa" })
+    @Html.DropDownList("marka", new SelectList(Enum.GetValues(typeof(Marke))), "Marka", new { @class = "form-control", style = "margin-left: 5px;" })
     <div class="form-control">
         <label class="radio-inline">
             @Html.RadioButton("stanje", "N") Novo
