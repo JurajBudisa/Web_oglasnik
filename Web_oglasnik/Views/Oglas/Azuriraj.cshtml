@@ -27,9 +27,13 @@
         int id = Convert.ToInt32(Session["ID"]);
         Model.ID_Korisnika = id;
         @Html.HiddenFor(model => model.ID_Korisnika);
+
         string username = Convert.ToString(Session["Username"]);
         Model.Username = username;
         @Html.HiddenFor(model => model.Username);
+
+        Model.Datum = DateTime.Now.Date.ToString("dd/MM/yyyy"); ;
+        @Html.HiddenFor(model => model.Datum);
     }
     else
     {

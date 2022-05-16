@@ -46,5 +46,9 @@ namespace Web_oglasnik.Models
         [Display(Name = "Korisničko ime")]
         public string Username { get; set; }
 
+        [Column("datum")]
+        [Display(Name = "Datum objave")]
+        public string Datum { get; set; }
+
     }
 }
