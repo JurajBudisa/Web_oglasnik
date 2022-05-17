@@ -48,7 +48,7 @@ namespace Web_oglasnik.Controllers
         {
             using(BazaDbContext db = new BazaDbContext())
             {
-                var usr = db.PopisKorisnika.Single(u => u.Username == korisnik.Username && u.Password == korisnik.Password);
+                var usr = db.PopisKorisnika.FirstOrDefault(u => u.Username == korisnik.Username && u.Password == korisnik.Password);
                 if (usr != null)
                 {
                     Session["ID"] = usr.ID.ToString();
@@ -57,7 +57,7 @@ namespace Web_oglasnik.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "korisničko ime ili lozinka je pogrešna");
+                    ModelState.AddModelError("", "Pogrešno korisničko ime i/ili lozinka");
                 }
             }
             return View();

@@ -42,6 +42,9 @@ else
         </label>
     </div>
 
+    @Html.TextBox("cijenaVece", "", new { @class = "form-control", placeholder = "Od", style = "margin-right: 1px; width: 100px;" })
+    @Html.TextBox("cijenaManje", "", new { @class = "form-control", placeholder = "Do", style = "margin-left: 3px; width: 100px;" })
+
     <button type="submit" class="btn btn-primary">
         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         Traži

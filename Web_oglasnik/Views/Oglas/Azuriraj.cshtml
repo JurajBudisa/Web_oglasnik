@@ -79,7 +79,7 @@
             <label class="radio-inline">
                 @Html.RadioButtonFor(model => model.Stanje, "R") Rabljeno
             </label>
-            @Html.ValidationMessageFor(model => model.Stanje)
+            @Html.ValidationMessageFor(model => model.Stanje, "", new { @class = "text-danger" })
         </div>
     </div>
 

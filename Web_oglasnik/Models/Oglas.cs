@@ -28,6 +28,7 @@ namespace Web_oglasnik.Models
         [Display(Name = "Godište automobila")]
         [Range(1900, 2022, ErrorMessage = "{0} mora biti između {1} i {2}")]
         [RegularExpression("([1-9][0-9]*)", ErrorMessage = "{0} mora biti broj")]
+        [Required(ErrorMessage = "{0} je obavezno")]
         public string Godiste { get; set; }
 
         [Column("stanje")]

@@ -7,7 +7,6 @@
 
 <h2>Registracija</h2>
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -15,6 +14,7 @@
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         <div class="form-group">
             @Html.LabelFor(model => model.Ime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
