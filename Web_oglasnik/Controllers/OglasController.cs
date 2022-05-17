@@ -31,11 +31,17 @@ namespace Web_oglasnik.Controllers
 
             if (!String.IsNullOrWhiteSpace(marka))
                 oglasi = oglasi.Where(x => x.Marka.ToString() == marka).ToList();
-
-            if (!String.IsNullOrWhiteSpace(cijenaVece))
-                oglasi = oglasi.Where(x => Convert.ToInt64(x.Cijena) >= Convert.ToInt64(cijenaVece)).ToList();
-            if (!String.IsNullOrWhiteSpace(cijenaManje))
-                oglasi = oglasi.Where(x => Convert.ToInt64(x.Cijena) <= Convert.ToInt64(cijenaManje)).ToList();
+            try
+            {
+                if (!String.IsNullOrWhiteSpace(cijenaVece))
+                    oglasi = oglasi.Where(x => Convert.ToInt64(x.Cijena) >= Convert.ToInt64(cijenaVece)).ToList();
+                if (!String.IsNullOrWhiteSpace(cijenaManje))
+                    oglasi = oglasi.Where(x => Convert.ToInt64(x.Cijena) <= Convert.ToInt64(cijenaManje)).ToList();
+            }
+            catch
+            {
+                return View(oglasi);
+            }
             return View(oglasi);
         }
 
