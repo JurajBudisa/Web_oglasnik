@@ -28,8 +28,8 @@ else
 
 @using (Html.BeginForm("Popis", "Oglas", FormMethod.Get, new { @class = "form-inline" }))
 {
-    @Html.TextBox("naziv", "", new { @class = "form-control", placeholder = "Naziv oglasa" })
-    @Html.DropDownList("marka", new SelectList(Enum.GetValues(typeof(Marke))), "Marka", new { @class = "form-control", style = "margin-left: 5px;" })
+    @Html.TextBox("naslov", "", new { @class = "form-control", placeholder = "Naziv oglasa" })
+    @Html.DropDownList("marka", new SelectList(Enum.GetValues(typeof(Marke))), "Sve marke", new { @class = "form-control", style = "margin-left: 3px;" })
     <div class="form-control">
         <label class="radio-inline">
             @Html.RadioButton("stanje", "N") Novo
@@ -89,7 +89,7 @@ else
 
             <tr>
                 <td><strong>Objavljen:</strong></td>
-                <td>@oglas.Datum </td>
+                <td>@oglas.Datum</td>
             </tr>
         }
     </table>
