@@ -1,0 +1,72 @@
+﻿@using Web_oglasnik.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Oglas>
+@{
+    AjaxOptions ajaxOpt = new AjaxOptions()
+    {
+        UpdateTargetId = "popisOglasa",
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "GET",
+        OnBegin = "LoadingRow"
+    };
+}
+
+<div id="popisOglasa">
+    @if (Model.Count() <= 0)
+    {
+        <p>Nema rezultata pretrage!</p>
+    }
+    else
+    {
+        <table>
+            @foreach (Oglas oglas in Model)
+            {
+                <tr>
+                    <td><h3>@Html.ActionLink(oglas.Naslov, "Detalji", new { id = oglas.ID })</h3></td>
+                </tr>
+
+                <tr>
+                    <td><strong>Marka:</strong></td>
+                    <td>@oglas.Marka</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Stanje:</strong></td>
+                    @if (oglas.Stanje == "N")
+                    {
+                        <td>Novo</td>
+                    }
+                    else
+                    {
+                        <td>Rabljeno</td>
+                    }
+                </tr>
+
+                <tr>
+                    <td><strong>Godište:</strong></td>
+                    <td>@oglas.Godiste.</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Cijena:</strong></td>
+                    <td>@String.Format("{0:N0}", Convert.ToDecimal(oglas.Cijena)) kn </td>
+                </tr>
+
+                <tr>
+                    <td><strong>Objavljen:</strong></td>
+                    <td>@oglas.Datum</td>
+                </tr>
+            }
+        </table>
+    }
+
+    <div id="pager">
+        Ukupno rezultata: @Model.TotalItemCount </br>
+
+        Stranica @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) od @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("PopisPartial",
+            new { page, smjer = ViewBag.Smjer, naziv = ViewBag.Naziv, spol = ViewBag.Spol, sort = ViewBag.Sortiranje }),
+            PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(ajaxOpt))
+    </div>
+</div>

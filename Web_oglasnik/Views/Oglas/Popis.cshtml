@@ -3,6 +3,14 @@
 @{
     ViewBag.Title = "Oglasi";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    AjaxOptions ajaxOpt = new AjaxOptions()
+    {
+        UpdateTargetId = "popisOglasa",
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "GET",
+        OnBegin = "LoadingRow"
+    };
 }
 
 <h2>Oglasi</h2>
@@ -26,7 +34,7 @@ else
 <br />
 <br />
 
-@using (Html.BeginForm("Popis", "Oglas", FormMethod.Get, new { @class = "form-inline" }))
+@using (Ajax.BeginForm("PopisPartial", "Oglas", ajaxOpt, new { @class = "form-inline", id = "formPopisStudenata" }))
 {
     @Html.TextBox("naslov", "", new { @class = "form-control", placeholder = "Naziv oglasa" })
     @Html.DropDownList("marka", new SelectList(Enum.GetValues(typeof(Marke))), "Sve marke", new { @class = "form-control", style = "margin-left: 3px;" })
@@ -50,51 +58,21 @@ else
         Traži
     </button>
 }
-@if (Model.Count() <= 0)
-{
-    <p>Nema rezultata pretrage!</p>
+
+<br />
+@{
+    Html.RenderAction("PopisPartial", new { naziv = "", spol = "", smjerovi = "" });
 }
-else
-{
-    <table>
-        @foreach (Oglas oglas in Model)
-        {
-            <tr>
-                <td><h3>@Html.ActionLink(oglas.Naslov, "Detalji", new { id = oglas.ID })</h3></td>
-            </tr>
 
-            <tr>
-                <td><strong>Marka:</strong></td>
-                <td>@oglas.Marka</td>
-            </tr>
+@section Scripts{
+    <script type="text/javascript">
+        function LoadingRow() {
+            $("#tableStudenti tbody").empty();
 
-            <tr>
-                <td><strong>Stanje:</strong></td>
-                @if (oglas.Stanje == "N")
-                {
-                    <td>Novo</td>
-                }
-                else
-                {
-                    <td>Rabljeno</td>
-                }
-            </tr>
+            $("#tableStudenti tbody").append('<tr><td colspan="7" style="text-align: center">Pretraga u tijeku...</td></tr>');
 
-            <tr>
-                <td><strong>Godište:</strong></td>
-                <td>@oglas.Godiste.</td>
-            </tr>
-
-            <tr>
-                <td><strong>Cijena:</strong></td>
-                <td>@String.Format("{0:N0}", Convert.ToDecimal(oglas.Cijena)) kn </td>
-            </tr>
-
-            <tr>
-                <td><strong>Objavljen:</strong></td>
-                <td>@oglas.Datum</td>
-            </tr>
+            $("#pager").empty();
         }
-    </table>
+    </script>
 }
 

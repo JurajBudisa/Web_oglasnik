@@ -1,4 +1,5 @@
-﻿using Web_oglasnik.Models;
+﻿using PagedList;
+using Web_oglasnik.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,35 @@ namespace Web_oglasnik.Controllers
                 return View(oglasi);
             }
             return View(oglasi);
+        }
+
+        public ActionResult PopisPartial(string naslov, string stanje, string marka, string cijenaVece, string cijenaManje, int? page)
+        {
+            var oglasi = bazaPOdataka.PopisOglasa.ToList();
+
+            if (!String.IsNullOrWhiteSpace(naslov))
+                oglasi = oglasi.Where(x => x.Naslov.ToUpper().Contains(naslov.ToUpper())).ToList();
+
+            if (!String.IsNullOrWhiteSpace(stanje))
+                oglasi = oglasi.Where(x => x.Stanje == stanje).ToList();
+
+            if (!String.IsNullOrWhiteSpace(marka))
+                oglasi = oglasi.Where(x => x.Marka.ToString() == marka).ToList();
+            try
+            {
+                if (!String.IsNullOrWhiteSpace(cijenaVece))
+                    oglasi = oglasi.Where(x => Convert.ToInt64(x.Cijena) >= Convert.ToInt64(cijenaVece)).ToList();
+                if (!String.IsNullOrWhiteSpace(cijenaManje))
+                    oglasi = oglasi.Where(x => Convert.ToInt64(x.Cijena) <= Convert.ToInt64(cijenaManje)).ToList();
+            }
+            catch
+            {
+                return View(oglasi);
+            }
+            //return View(oglasi);
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return PartialView("_PartialPopis", oglasi.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult Detalji(int? id)
