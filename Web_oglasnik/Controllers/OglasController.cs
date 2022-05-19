@@ -19,30 +19,10 @@ namespace Web_oglasnik.Controllers
             ViewBag.Fakultet = "Međimursko veleučilište";
             return View();
         }
-
+        
         public ActionResult Popis(string naslov, string stanje, string marka, string cijenaVece, string cijenaManje)
         {
             var oglasi = bazaPOdataka.PopisOglasa.ToList();
-
-            if (!String.IsNullOrWhiteSpace(naslov))
-                oglasi = oglasi.Where(x => x.Naslov.ToUpper().Contains(naslov.ToUpper())).ToList();
-
-            if (!String.IsNullOrWhiteSpace(stanje))
-                oglasi = oglasi.Where(x => x.Stanje == stanje).ToList();
-
-            if (!String.IsNullOrWhiteSpace(marka))
-                oglasi = oglasi.Where(x => x.Marka.ToString() == marka).ToList();
-            try
-            {
-                if (!String.IsNullOrWhiteSpace(cijenaVece))
-                    oglasi = oglasi.Where(x => Convert.ToInt64(x.Cijena) >= Convert.ToInt64(cijenaVece)).ToList();
-                if (!String.IsNullOrWhiteSpace(cijenaManje))
-                    oglasi = oglasi.Where(x => Convert.ToInt64(x.Cijena) <= Convert.ToInt64(cijenaManje)).ToList();
-            }
-            catch
-            {
-                return View(oglasi);
-            }
             return View(oglasi);
         }
 

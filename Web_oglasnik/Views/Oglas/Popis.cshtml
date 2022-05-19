@@ -58,18 +58,17 @@ else
         Traži
     </button>
 }
-
-<br />
+<hr />
 @{
-    Html.RenderAction("PopisPartial", new { naziv = "", spol = "", smjerovi = "" });
+    Html.RenderAction("PopisPartial", new { naslov = "", stanje = "", marka = "" });
 }
 
 @section Scripts{
     <script type="text/javascript">
         function LoadingRow() {
-            $("#tableStudenti tbody").empty();
+            $("#tableOglasi tbody").empty();
 
-            $("#tableStudenti tbody").append('<tr><td colspan="7" style="text-align: center">Pretraga u tijeku...</td></tr>');
+            $("#tableOglasi tbody").append('<tr><td colspan="7" style="text-align: center">Pretraga u tijeku...</td></tr>');
 
             $("#pager").empty();
         }
