@@ -1,4 +1,5 @@
-﻿using PagedList;
+﻿using System.IO;
+using PagedList;
 using Web_oglasnik.Models;
 using System;
 using System.Collections.Generic;
@@ -120,6 +121,25 @@ namespace Web_oglasnik.Controllers
                 ViewBag.Title = "Kreiranje novog oglasa";
                 ViewBag.Novi = true;
             }
+
+            if(s.ImageFile != null)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(s.ImageFile.FileName);
+                string extension = Path.GetExtension(s.ImageFile.FileName);
+
+                if(extension == ".jpg" || extension == ".jpeg" || extension == ".png")
+                {
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    s.Slika = "~/Images/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                    s.ImageFile.SaveAs(fileName);
+                }
+                else
+                {
+                    ModelState.AddModelError("Slika", "Nepodržana ekstenzija");
+                }
+            }
+
             return View(s);
         }
 

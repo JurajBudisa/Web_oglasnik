@@ -15,7 +15,7 @@
         <h3>@Model.Naslov</h3>
     }
 }
-@using (Html.BeginForm("Azuriraj", "Oglas", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Azuriraj", "Oglas", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "Ispravite podatke");
@@ -96,6 +96,16 @@
         <div class="col-md-10">
             @Html.TextAreaFor(model => model.Opis, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Opis, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @Html.HiddenFor(model => model.Slika);
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Slika, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="ImageFile" class="form-control" />
+            @Html.ValidationMessageFor(model => model.Slika, "", new { @class = "text-danger" })
         </div>
     </div>
 

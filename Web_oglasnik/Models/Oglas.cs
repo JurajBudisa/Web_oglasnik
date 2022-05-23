@@ -60,5 +60,13 @@ namespace Web_oglasnik.Models
         [Display(Name = "Datum objave")]
         public string Datum { get; set; }
 
+        [Column("slika")]
+        [Display(Name = "Slika")]
+        [Required(ErrorMessage = "{0} je obavezna")]
+        public string Slika { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase ImageFile { get; set; }
+
     }
 }
