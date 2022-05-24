@@ -101,6 +101,25 @@ namespace Web_oglasnik.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Azuriraj(Oglas s)
         {
+            if (s.ImageFile != null)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(s.ImageFile.FileName);
+                string extension = Path.GetExtension(s.ImageFile.FileName);
+
+                if (extension == ".jpg" || extension == ".jpeg" || extension == ".png")
+                {
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    s.Slika = "~/Images/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                    s.ImageFile.SaveAs(fileName);
+
+                }
+                else
+                {
+                    ModelState.AddModelError("Slika", "Nepodržana ekstenzija");
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 if (s.ID != 0)
@@ -122,25 +141,8 @@ namespace Web_oglasnik.Controllers
                 ViewBag.Novi = true;
             }
 
-            if(s.ImageFile != null)
-            {
-                string fileName = Path.GetFileNameWithoutExtension(s.ImageFile.FileName);
-                string extension = Path.GetExtension(s.ImageFile.FileName);
-
-                if(extension == ".jpg" || extension == ".jpeg" || extension == ".png")
-                {
-                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    s.Slika = "~/Images/" + fileName;
-                    fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
-                    s.ImageFile.SaveAs(fileName);
-                }
-                else
-                {
-                    ModelState.AddModelError("Slika", "Nepodržana ekstenzija");
-                }
-            }
-
             return View(s);
+
         }
 
         public ActionResult Brisi(int? id)
