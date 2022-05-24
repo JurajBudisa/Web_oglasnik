@@ -101,27 +101,28 @@ namespace Web_oglasnik.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Azuriraj(Oglas s)
         {
-            if (s.ImageFile != null)
-            {
-                string fileName = Path.GetFileNameWithoutExtension(s.ImageFile.FileName);
-                string extension = Path.GetExtension(s.ImageFile.FileName);
-
-                if (extension == ".jpg" || extension == ".jpeg" || extension == ".png")
-                {
-                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    s.Slika = "~/Images/" + fileName;
-                    fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
-                    s.ImageFile.SaveAs(fileName);
-
-                }
-                else
-                {
-                    ModelState.AddModelError("Slika", "Nepodržana ekstenzija");
-                }
-            }
 
             if (ModelState.IsValid)
             {
+                if (s.ImageFile != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(s.ImageFile.FileName);
+                    string extension = Path.GetExtension(s.ImageFile.FileName);
+
+                    if (extension == ".jpg" || extension == ".jpeg" || extension == ".png")
+                    {
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        s.Slika = "~/Images/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                        s.ImageFile.SaveAs(fileName);
+
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Slika", "Nepodržana ekstenzija");
+                    }
+                }
+
                 if (s.ID != 0)
                     bazaPOdataka.Entry(s).State = System.Data.Entity.EntityState.Modified;
                 else

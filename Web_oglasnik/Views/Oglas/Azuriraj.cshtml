@@ -37,6 +37,17 @@
     }
     else
     {
+        int id = Convert.ToInt32(Session["ID"]);
+        Model.ID_Korisnika = id;
+        @Html.HiddenFor(model => model.ID_Korisnika);
+
+        string username = Convert.ToString(Session["Username"]);
+        Model.Username = username;
+        @Html.HiddenFor(model => model.Username);
+
+        Model.Datum = DateTime.Now.Date.ToString("dd/MM/yyyy"); ;
+        @Html.HiddenFor(model => model.Datum);
+
         <div class="form-group">
             @Html.LabelFor(model => model.ID, new { @class = "control-label col-md-2" })
             <div class="col-md-10">

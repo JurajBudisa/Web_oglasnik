@@ -20,13 +20,16 @@
 
 <hr />
 
-<div class="row">
-    <div class="col-md-10">
-        <img src="@Url.Content(Model.Slika)" width="250" height="250" />
+@if (!string.IsNullOrWhiteSpace(Model.Slika))
+{
+    <div class="row">
+        <div class="col-md-10">
+            <img src="@Url.Content(Model.Slika)" width="250" height="250" />
+        </div>
     </div>
-</div>
 
-<hr />
+    <hr />
+}
 
 <div class="row">
     <div class="col-md-2">

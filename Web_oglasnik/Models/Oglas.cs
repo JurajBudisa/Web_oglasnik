@@ -62,7 +62,6 @@ namespace Web_oglasnik.Models
 
         [Column("slika")]
         [Display(Name = "Slika")]
-        //[Required(ErrorMessage = "{0} je obavezna")]
         public string Slika { get; set; }
 
         [NotMapped]
