@@ -10,6 +10,7 @@ namespace Web_oglasnik.Models
     [Table("ovlasti")]
     public class Ovlast
     {
+        [Key]
         public string Sifra { get; set; }
 
         public string Naziv { get; set; }

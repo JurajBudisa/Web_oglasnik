@@ -130,59 +130,5 @@ namespace Web_oglasnik.Controllers
 
             return View(model);
         }
-
-
-
-        public ActionResult Detalji(int? id)
-        {
-            if (!id.HasValue)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            Korisnik korisnik = bazaPOdataka.PopisKorisnika.FirstOrDefault(x => x.ID == id);
-
-            if (korisnik == null)
-            {
-                return HttpNotFound();
-            }
-            return View(korisnik);
-        }
-
-        public ActionResult Azuriraj(int? id)
-        {
-            Korisnik korisnik = null;
-
-                korisnik = bazaPOdataka.PopisKorisnika
-                    .FirstOrDefault(s => s.ID == id);
-
-                if (korisnik == null)
-                {
-                    return HttpNotFound();
-                }
-
-                ViewBag.Title = "Ažuriranje korisnika";
-                ViewBag.Novi = false;
-
-            return View(korisnik);
-        }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Azuriraj(Korisnik korisnik)
-        {
-            if (ModelState.IsValid)
-            {
-                if (korisnik.ID != 0)
-                    bazaPOdataka.Entry(korisnik).State = System.Data.Entity.EntityState.Modified;
-                else
-                    bazaPOdataka.PopisKorisnika.Add(korisnik);
-                bazaPOdataka.SaveChanges();
-                return RedirectToAction("Index", "Oglas");
-            }
-
-                ViewBag.Title = "Ažuriranje korisnika";
-
-            return View(korisnik);
-        }
     }
 }

@@ -12,10 +12,6 @@ namespace Web_oglasnik.Models
     public class Korisnik
     {
 
-        [Key]
-        [Display(Name = "ID korisnika")]
-        public int ID { get; set; }
-
         [Column("ime")]
         [Display(Name = "Ime")]
         [Required(ErrorMessage = "{0} je obavezno")]
@@ -53,6 +49,7 @@ namespace Web_oglasnik.Models
         [Required(ErrorMessage = "{0} je obavezan")]
         public string Mobitel { get; set; }
 
+        [Key]
         [Column("username")]
         [Display(Name = "Korisničko ime")]
         [Required(ErrorMessage = "{0} je obavezno")]
