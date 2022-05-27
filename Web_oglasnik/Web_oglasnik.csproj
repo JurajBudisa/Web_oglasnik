@@ -246,6 +246,7 @@
     <Compile Include="Models\Marke.cs" />
     <Compile Include="Models\Oglas.cs" />
     <Compile Include="Models\OglasiDB.cs" />
+    <Compile Include="Models\Ovlast.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
