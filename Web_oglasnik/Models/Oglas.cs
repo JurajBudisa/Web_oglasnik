@@ -48,14 +48,6 @@ namespace Web_oglasnik.Models
         [Required(ErrorMessage = "{0} je obavezan")]
         public string Opis { get; set; }
 
-        [Column("id_korisnika")]
-        [Display(Name = "ID korisnika")]
-        public int ID_Korisnika { get; set; }
-
-        [Column("username")]
-        [Display(Name = "Korisničko ime")]
-        public string Username { get; set; }
-
         [Column("datum")]
         [Display(Name = "Datum objave")]
         public string Datum { get; set; }

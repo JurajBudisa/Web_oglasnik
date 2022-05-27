@@ -1,4 +1,5 @@
-﻿@using Web_oglasnik.Models
+﻿@using Web_oglasnik.Misc
+@using Web_oglasnik.Models
 @model Oglas
 @{
     ViewBag.Title = "Detalji";
@@ -85,7 +86,7 @@
         <strong>Korisnik:</strong>
     </div>
     <div class="col-md-10">
-        @Html.ActionLink(Model.Username, "Detalji", "Korisnik", new { id = Model.ID_Korisnika }, null)
+        @Html.ActionLink(((User as LogiraniKorisnik).KorisnickoIme), "Detalji", "Korisnik")
     </div>
 </div>
 
@@ -100,17 +101,6 @@
 
 <br />
 
-@{
-    int id = Convert.ToInt32(Session["ID"]);
-
-    if (id == Model.ID_Korisnika)
-    {
-        @Html.ActionLink("Povratak na oglase", "Popis", "Oglas", null, new { @class = "btn btn-primary btn-sm" })
-        @Html.ActionLink("Ažuriraj", "Azuriraj", new { id = Model.ID }, new { @class = "btn btn-warning btn-sm", style = "margin-left: 5px;" })
-        @Html.ActionLink("Izbriši", "Brisi", new { id = Model.ID }, new { @class = "btn btn-danger btn-sm", style = "margin-left: 5px;" })
-    }
-    else
-    {
-        @Html.ActionLink("Povratak na oglase", "Popis", "Oglas", null, new { @class = "btn btn-primary btn-sm" })
-    }
-}
+@Html.ActionLink("Povratak na oglase", "Popis", "Oglas", null, new { @class = "btn btn-primary btn-sm" })
+@Html.ActionLink("Ažuriraj", "Azuriraj", new { id = Model.ID }, new { @class = "btn btn-warning btn-sm", style = "margin-left: 5px;" })
+@Html.ActionLink("Izbriši", "Brisi", new { id = Model.ID }, new { @class = "btn btn-danger btn-sm", style = "margin-left: 5px;" })

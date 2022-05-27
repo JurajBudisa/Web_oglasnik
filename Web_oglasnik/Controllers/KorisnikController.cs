@@ -130,19 +130,5 @@ namespace Web_oglasnik.Controllers
 
             return View(model);
         }
-
-        public ActionResult Detalji(int? id)
-        {
-            if (!id.HasValue)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            Korisnik korisnik = bazaPOdataka.PopisKorisnika.FirstOrDefault(x => x.ID == id);
-
-            if (korisnik == null)
-            {
-                return HttpNotFound();
-            }
-            return View(korisnik);
-        }
     }
 }

@@ -11,9 +11,6 @@ namespace Web_oglasnik.Models
     [Table("korisnici")]
     public class Korisnik
     {
-        [Display(Name = "ID korisnika")]
-        public int ID { get; set; }
-
         [Column("ime")]
         [Display(Name = "Ime")]
         [Required(ErrorMessage = "{0} je obavezno")]
