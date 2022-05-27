@@ -43,6 +43,8 @@ namespace Web_oglasnik.Models
         [Required(ErrorMessage = "{0} je obavezan")]
         public string Email { get; set; }
 
+        public string Lozinka { get; set; }
+
         [Column("mobitel")]
         [Display(Name = "Broj mobitela")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Neispravan broj mobitela")]
@@ -50,23 +52,22 @@ namespace Web_oglasnik.Models
         public string Mobitel { get; set; }
 
         [Key]
-        [Column("username")]
+        [Column("korisnicko_ime")]
         [Display(Name = "Korisničko ime")]
         [Required(ErrorMessage = "{0} je obavezno")]
-        public string Username { get; set; }
+        public string KorisnickoIme { get; set; }
 
-        [Column("lozinka")]
         [Display(Name = "Lozinka")]
         [DataType(DataType.Password)]
-        [Required(ErrorMessage = "{0} je obavezna")]
+        [Required]
         [NotMapped]
-        public string Password { get; set; }
+        public string LozinkaUnos { get; set; }
 
         [Display(Name = "Ponovljena lozinka")]
         [DataType(DataType.Password)]
         [Required]
         [NotMapped]
-        [Compare("Password", ErrorMessage = "Lozinke moraju biti jednake")]
-        public string Password2 { get; set; }
+        [Compare("LozinkaUnos", ErrorMessage = "Lozinke moraju biti jednake")]
+        public string LozinkaUnos2 { get; set; }
     }
 }

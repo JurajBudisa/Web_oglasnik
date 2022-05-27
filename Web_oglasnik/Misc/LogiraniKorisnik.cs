@@ -23,8 +23,8 @@ namespace Web_oglasnik.Misc
 
         public LogiraniKorisnik(Korisnik kor)
         {
-            this.Identity = new GenericIdentity(kor.Username);
-            this.KorisnickoIme = kor.Username;
+            this.Identity = new GenericIdentity(kor.KorisnickoIme);
+            this.KorisnickoIme = kor.KorisnickoIme;
             this.PrezimeIme = kor.PrezimeIme;
             this.Ovlast = kor.SifraOvlasti;
         }

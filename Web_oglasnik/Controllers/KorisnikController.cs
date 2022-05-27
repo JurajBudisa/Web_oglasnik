@@ -39,10 +39,10 @@ namespace Web_oglasnik.Controllers
             if (ModelState.IsValid)
             {
                 //dohvaćamo podatke o korisniku po korisničkom imenu
-                var korisnikBaza = bazaPOdataka.PopisKorisnika.FirstOrDefault(x => x.Username == model.KorisnickoIme);
+                var korisnikBaza = bazaPOdataka.PopisKorisnika.FirstOrDefault(x => x.KorisnickoIme == model.KorisnickoIme);
                 if (korisnikBaza != null)
                 {
-                    bool passwordOK = korisnikBaza.Password == Misc.PasswordHelper.IzracunajHash(model.Lozinka);
+                    bool passwordOK = korisnikBaza.Lozinka == Misc.PasswordHelper.IzracunajHash(model.Lozinka);
 
                     if (passwordOK)
                     {
@@ -96,10 +96,10 @@ namespace Web_oglasnik.Controllers
         [HttpPost]
         public ActionResult Registracija(Korisnik model)
         {
-            if (!String.IsNullOrWhiteSpace(model.Username))
+            if (!String.IsNullOrWhiteSpace(model.KorisnickoIme))
             {
                 //metoda Any vraća ako postoji (true/false) barem jedan zapis koji zadovoljava uvjete pretrage
-                var korImeZauzeto = bazaPOdataka.PopisKorisnika.Any(x => x.Username == model.Username);
+                var korImeZauzeto = bazaPOdataka.PopisKorisnika.Any(x => x.KorisnickoIme == model.KorisnickoIme);
                 if (korImeZauzeto)
                 {
                     ModelState.AddModelError("KorisnickoIme", "Korisničko ime je već zauzeto");
@@ -116,7 +116,7 @@ namespace Web_oglasnik.Controllers
 
             if (ModelState.IsValid)
             {
-                model.Password = Misc.PasswordHelper.IzracunajHash(model.Password);
+                model.Lozinka = Misc.PasswordHelper.IzracunajHash(model.LozinkaUnos);
                 model.SifraOvlasti = "MO";
 
                 bazaPOdataka.PopisKorisnika.Add(model);
