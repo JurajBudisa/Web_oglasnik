@@ -11,6 +11,7 @@ namespace Web_oglasnik.Models
     [Table("korisnici")]
     public class Korisnik
     {
+
         [Key]
         [Display(Name = "ID korisnika")]
         public int ID { get; set; }
@@ -24,6 +25,21 @@ namespace Web_oglasnik.Models
         [Display(Name = "Prezime")]
         [Required(ErrorMessage = "{0} je obavezno")]
         public string Prezime { get; set; }
+
+        public string PrezimeIme
+        {
+            get
+            {
+                return Prezime + " " + Ime;
+            }
+        }
+
+        [Column("ovlast")]
+        [Display(Name = "Ovlast")]
+        [ForeignKey("Ovlast")]
+        public string SifraOvlasti { get; set; }
+
+        public virtual Ovlast Ovlast { get; set; }
 
         [Column("email")]
         [Display(Name = "Email")]
@@ -46,6 +62,14 @@ namespace Web_oglasnik.Models
         [Display(Name = "Lozinka")]
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "{0} je obavezna")]
+        [NotMapped]
         public string Password { get; set; }
+
+        [Display(Name = "Ponovljena lozinka")]
+        [DataType(DataType.Password)]
+        [Required]
+        [NotMapped]
+        [Compare("Password", ErrorMessage = "Lozinke moraju biti jednake")]
+        public string Password2 { get; set; }
     }
 }

@@ -241,8 +241,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Misc\LogiraniKorisnikSerializeModel.cs" />
+    <Compile Include="Misc\LogiraniKorisnik.cs" />
+    <Compile Include="Misc\PasswordHelper.cs" />
     <Compile Include="Models\BazaDbContext.cs" />
     <Compile Include="Models\Korisnik.cs" />
+    <Compile Include="Models\KorisnikPrijava.cs" />
     <Compile Include="Models\Marke.cs" />
     <Compile Include="Models\Oglas.cs" />
     <Compile Include="Models\OglasiDB.cs" />
@@ -294,11 +298,13 @@
     <Content Include="Views\Oglas\Azuriraj.cshtml" />
     <Content Include="Views\Oglas\Brisi.cshtml" />
     <Content Include="Views\Oglas\BrisiStatus.cshtml" />
-    <Content Include="Views\Korisnik\Login.cshtml" />
-    <Content Include="Views\Korisnik\Register.cshtml" />
     <Content Include="Views\Korisnik\Detalji.cshtml" />
     <Content Include="Views\Korisnik\Azuriraj.cshtml" />
     <Content Include="Views\Oglas\_PartialPopis.cshtml" />
+    <Content Include="Views\Korisnik\Index.cshtml" />
+    <Content Include="Views\Korisnik\Prijava.cshtml" />
+    <Content Include="Views\Korisnik\Registracija.cshtml" />
+    <Content Include="Views\Korisnik\RegistracijaOK.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

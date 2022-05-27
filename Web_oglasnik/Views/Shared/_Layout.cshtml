@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Web_oglasnik.Misc
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -18,7 +19,7 @@
                 </button>
                 @Html.ActionLink("Web oglasnik", "Index", "Oglas", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            @if (Session["ID"] != null)
+            @if (User.Identity.IsAuthenticated)
             {
                 <div class="navbar-collapse collapse" style="height: 100%">
                     <ul class="nav navbar-nav navbar-left">
@@ -27,6 +28,8 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink(((User as LogiraniKorisnik).PrezimeIme), "Index", "Home")</li>
+                        <li>@Html.ActionLink("Korisnici", "Index", "Korisnik")</li>
                         <li>@Html.ActionLink("Predaj oglas", "Azuriraj", "Oglas")</li>
                         <li>@Html.ActionLink("Postavke", "Azuriraj", "Korisnik", new { id = Session["ID"] }, null)</li>
                         <li>@Html.ActionLink("Odjava", "Odjava", "Korisnik")</li>
@@ -42,8 +45,8 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li>@Html.ActionLink("Prijava", "Login", "Korisnik")</li>
-                        <li>@Html.ActionLink("Registracija", "Register", "Korisnik")</li>
+                        <li>@Html.ActionLink("Prijava", "Prijava", "Korisnik")</li>
+                        <li>@Html.ActionLink("Registracija", "Registracija", "Korisnik")</li>
                     </ul>
                 </div>
             }
