@@ -80,16 +80,14 @@
 
 <hr />
 
-@*
-    <div class="row">
-        <div class="col-md-2">
-            <strong>Korisnik:</strong>
-        </div>
-        <div class="col-md-10">
-            @Html.ActionLink(Model.Username, "Detalji", "Korisnik", new { id = Model.ID_Korisnika }, null)
-        </div>
+<div class="row">
+    <div class="col-md-2">
+        <strong>Korisnik:</strong>
     </div>
-*@
+    <div class="col-md-10">
+        @Html.ActionLink(Model.Username, "Detalji", "Korisnik", new { id = Model.ID_Korisnika }, null)
+    </div>
+</div>
 
 <div class="row">
     <div class="col-md-2">
