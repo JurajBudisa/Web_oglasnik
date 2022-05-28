@@ -25,7 +25,7 @@
 {
     <div class="row">
         <div class="col-md-10">
-            <img src="@Url.Content(Model.Slika)" width="250" />
+            <img src="@Url.Content(Model.Slika)" width="500" />
         </div>
     </div>
 
@@ -86,7 +86,7 @@
         <strong>Korisnik:</strong>
     </div>
     <div class="col-md-10">
-        @Html.ActionLink(((User as LogiraniKorisnik).KorisnickoIme), "Detalji", "Korisnik")
+        @Html.ActionLink(Model.KorisnickoIme, "Detalji", "Korisnik", new { korisnickoIme = Model.KorisnickoIme }, null)
     </div>
 </div>
 
@@ -102,5 +102,12 @@
 <br />
 
 @Html.ActionLink("Povratak na oglase", "Popis", "Oglas", null, new { @class = "btn btn-primary btn-sm" })
-@Html.ActionLink("Ažuriraj", "Azuriraj", new { id = Model.ID }, new { @class = "btn btn-warning btn-sm", style = "margin-left: 5px;" })
-@Html.ActionLink("Izbriši", "Brisi", new { id = Model.ID }, new { @class = "btn btn-danger btn-sm", style = "margin-left: 5px;" })
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (((User as LogiraniKorisnik).KorisnickoIme) == Model.KorisnickoIme || (User as LogiraniKorisnik).IsInRole(OvlastiKorisnik.Administrator) || (User as LogiraniKorisnik).IsInRole(OvlastiKorisnik.Moderator))
+    {
+        @Html.ActionLink("Ažuriraj", "Azuriraj", new { id = Model.ID }, new { @class = "btn btn-warning btn-sm", style = "margin-left: 5px;" })
+        @Html.ActionLink("Izbriši", "Brisi", new { id = Model.ID }, new { @class = "btn btn-danger btn-sm", style = "margin-left: 5px;" })
+    }
+}

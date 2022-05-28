@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using PagedList;
+using Web_oglasnik.Misc;
 using Web_oglasnik.Models;
 using System;
 using System.Collections.Generic;
@@ -10,23 +11,27 @@ using System.Web.Mvc;
 
 namespace Web_oglasnik.Controllers
 {
+    [Authorize]
     public class OglasController : Controller
     {
         BazaDbContext bazaPOdataka = new BazaDbContext();
         // GET: Oglas
+        [AllowAnonymous]
         public ActionResult Index()
         {
             ViewBag.Title = "Web oglasnik početna";
             ViewBag.Fakultet = "Međimursko veleučilište";
             return View();
         }
-        
+
+        [AllowAnonymous]
         public ActionResult Popis(string naslov, string stanje, string marka, string cijenaVece, string cijenaManje)
         {
             var oglasi = bazaPOdataka.PopisOglasa.ToList();
             return View(oglasi);
         }
 
+        [AllowAnonymous]
         public ActionResult PopisPartial(string naslov, string stanje, string marka, string cijenaVece, string cijenaManje, int? page)
         {
             var oglasi = bazaPOdataka.PopisOglasa.ToList();
@@ -56,6 +61,7 @@ namespace Web_oglasnik.Controllers
             return PartialView("_PartialPopis", oglasi.ToPagedList(pageNumber, pageSize));
         }
 
+        [AllowAnonymous]
         public ActionResult Detalji(int? id)
         {
             if (!id.HasValue)

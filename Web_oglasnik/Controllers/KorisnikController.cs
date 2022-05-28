@@ -15,6 +15,7 @@ namespace Web_oglasnik.Controllers
     {
         BazaDbContext bazaPOdataka = new BazaDbContext();
         // GET: Korisnik
+        [Authorize(Roles = OvlastiKorisnik.Administrator)]
         public ActionResult Index()
         {
             var listaKorisnika = bazaPOdataka.PopisKorisnika
@@ -80,6 +81,7 @@ namespace Web_oglasnik.Controllers
             return View(model);
         }
 
+        [Authorize]
         public ActionResult Odjava()
         {
             FormsAuthentication.SignOut();
@@ -88,12 +90,14 @@ namespace Web_oglasnik.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Registracija()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Registracija(Korisnik model)
         {
             if (!String.IsNullOrWhiteSpace(model.KorisnickoIme))
@@ -117,7 +121,7 @@ namespace Web_oglasnik.Controllers
             if (ModelState.IsValid)
             {
                 model.Lozinka = Misc.PasswordHelper.IzracunajHash(model.LozinkaUnos);
-                model.SifraOvlasti = "MO";
+                model.SifraOvlasti = "KO";
 
                 bazaPOdataka.PopisKorisnika.Add(model);
                 bazaPOdataka.SaveChanges();
@@ -129,6 +133,20 @@ namespace Web_oglasnik.Controllers
             ViewBag.Ovlasti = ovlasti;
 
             return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Detalji(string korisnickoIme)
+        {
+            Korisnik korisnik = bazaPOdataka.PopisKorisnika.FirstOrDefault(x => x.KorisnickoIme == korisnickoIme);
+
+            var oglasi = bazaPOdataka.PopisOglasa.ToList();
+
+            if (korisnik == null)
+            {
+                return HttpNotFound();
+            }
+            return View(korisnik);
         }
     }
 }

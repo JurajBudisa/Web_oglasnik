@@ -243,6 +243,7 @@
     </Compile>
     <Compile Include="Misc\LogiraniKorisnikSerializeModel.cs" />
     <Compile Include="Misc\LogiraniKorisnik.cs" />
+    <Compile Include="Misc\OvlastiKorisnik.cs" />
     <Compile Include="Misc\PasswordHelper.cs" />
     <Compile Include="Models\BazaDbContext.cs" />
     <Compile Include="Models\Korisnik.cs" />
