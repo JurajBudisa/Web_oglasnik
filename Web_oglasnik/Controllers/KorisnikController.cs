@@ -140,8 +140,6 @@ namespace Web_oglasnik.Controllers
         {
             Korisnik korisnik = bazaPOdataka.PopisKorisnika.FirstOrDefault(x => x.KorisnickoIme == korisnickoIme);
 
-            var oglasi = bazaPOdataka.PopisOglasa.ToList();
-
             if (korisnik == null)
             {
                 return HttpNotFound();
