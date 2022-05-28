@@ -11,6 +11,7 @@ namespace Web_oglasnik.Models
     [Table("korisnici")]
     public class Korisnik
     {
+        public List<Oglas> Oglas { get; set; }
 
         [Column("ime")]
         [Display(Name = "Ime")]

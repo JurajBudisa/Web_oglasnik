@@ -139,6 +139,8 @@ namespace Web_oglasnik.Controllers
         public ActionResult Detalji(string korisnickoIme)
         {
             Korisnik korisnik = bazaPOdataka.PopisKorisnika.FirstOrDefault(x => x.KorisnickoIme == korisnickoIme);
+            var model = new Korisnik();
+            model.Oglas = bazaPOdataka.PopisOglasa.ToList();
 
             if (korisnik == null)
             {
