@@ -39,7 +39,6 @@ namespace Web_oglasnik.Controllers
         {
             if (ModelState.IsValid)
             {
-                //dohvaćamo podatke o korisniku po korisničkom imenu
                 var korisnikBaza = bazaPOdataka.PopisKorisnika.FirstOrDefault(x => x.KorisnickoIme == model.KorisnickoIme);
                 if (korisnikBaza != null)
                 {
@@ -66,15 +65,12 @@ namespace Web_oglasnik.Controllers
                             ticketEncrypted);
                         Response.Cookies.Add(cookie);
 
-                        //ako postoji url kojem je korisnik prvotno pristupao tada preusmjeravamo na taj url
                         if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                             return Redirect(returnUrl);
 
                         return RedirectToAction("Index", "Home");
                     }
                 }
-                //provjeravamo hash lozinke iz baze i izračunati hash na temelju upisane lozinke na login formi
-
             }
 
             ModelState.AddModelError("", "Neispravno korisničko ime ili lozinka");
@@ -102,7 +98,6 @@ namespace Web_oglasnik.Controllers
         {
             if (!String.IsNullOrWhiteSpace(model.KorisnickoIme))
             {
-                //metoda Any vraća ako postoji (true/false) barem jedan zapis koji zadovoljava uvjete pretrage
                 var korImeZauzeto = bazaPOdataka.PopisKorisnika.Any(x => x.KorisnickoIme == model.KorisnickoIme);
                 if (korImeZauzeto)
                 {

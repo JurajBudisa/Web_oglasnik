@@ -55,7 +55,7 @@ namespace Web_oglasnik.Controllers
             {
                 return View(oglasi);
             }
-            //return View(oglasi);
+
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             return PartialView("_PartialPopis", oglasi.ToPagedList(pageNumber, pageSize));
@@ -84,7 +84,7 @@ namespace Web_oglasnik.Controllers
                 oglas = new Oglas();
                 ViewBag.Title = "Kreiranje oglasa";
                 ViewBag.Novi = true;
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             }
             else
             {
