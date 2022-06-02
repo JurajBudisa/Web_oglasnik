@@ -37,51 +37,56 @@
     </div>
 </div>
 
-<br />
-<br />
-<br />
+@if (Model.Oglas != null)
+{
 
-<h4>Svi oglasi ovog oglašivača</h4>
+    <br />
+    <br />
+    <br />
 
-<hr />
 
-<table>
-    @foreach (Oglas oglas in Model.Oglas)
-    {
-        <tr>
-            <td><h3>@Html.ActionLink(oglas.Naslov, "Detalji", "Oglas", new { id = oglas.ID }, null)</h3></td>
-        </tr>
+    <h4>Svi oglasi ovog oglašivača</h4>
 
-        <tr>
-            <td><strong>Marka:</strong></td>
-            <td>@oglas.Marka</td>
-        </tr>
+    <hr />
 
-        <tr>
-            <td><strong>Stanje:</strong></td>
-            @if (oglas.Stanje == "N")
-            {
-                <td>Novo</td>
-            }
-            else
-            {
-                <td>Rabljeno</td>
-            }
-        </tr>
+    <table>
+        @foreach (Oglas oglas in Model.Oglas)
+        {
+            <tr>
+                <td><h3>@Html.ActionLink(oglas.Naslov, "Detalji", "Oglas", new { id = oglas.ID }, null)</h3></td>
+            </tr>
 
-        <tr>
-            <td><strong>Godište:</strong></td>
-            <td>@oglas.Godiste.</td>
-        </tr>
+            <tr>
+                <td><strong>Marka:</strong></td>
+                <td>@oglas.Marka</td>
+            </tr>
 
-        <tr>
-            <td><strong>Cijena:</strong></td>
-            <td>@String.Format("{0:N0}", Convert.ToDecimal(oglas.Cijena)) kn </td>
-        </tr>
+            <tr>
+                <td><strong>Stanje:</strong></td>
+                @if (oglas.Stanje == "N")
+                {
+                    <td>Novo</td>
+                }
+                else
+                {
+                    <td>Rabljeno</td>
+                }
+            </tr>
 
-        <tr>
-            <td><strong>Objavljen:</strong></td>
-            <td>@oglas.Datum</td>
-        </tr>
-    }
-</table>
+            <tr>
+                <td><strong>Godište:</strong></td>
+                <td>@oglas.Godiste.</td>
+            </tr>
+
+            <tr>
+                <td><strong>Cijena:</strong></td>
+                <td>@String.Format("{0:N0}", Convert.ToDecimal(oglas.Cijena)) kn </td>
+            </tr>
+
+            <tr>
+                <td><strong>Objavljen:</strong></td>
+                <td>@oglas.Datum</td>
+            </tr>
+        }
+    </table>
+}

@@ -28,10 +28,10 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li>@Html.ActionLink(((User as LogiraniKorisnik).PrezimeIme), "Detalji", "Korisnik")</li>
+                        <li>@Html.ActionLink(((User as LogiraniKorisnik).PrezimeIme), "Detalji", "Korisnik", new { korisnickoIme = (User as LogiraniKorisnik).KorisnickoIme }, null)</li>
                         @if (User.Identity.IsAuthenticated && (User as LogiraniKorisnik).IsInRole(OvlastiKorisnik.Administrator))
                         {
-                        <li>@Html.ActionLink("Korisnici", "Index", "Korisnik")</li>
+                            <li>@Html.ActionLink("Korisnici", "Index", "Korisnik")</li>
                         }
                         <li>@Html.ActionLink("Predaj oglas", "Azuriraj", "Oglas")</li>
                         <li>@Html.ActionLink("Odjava", "Odjava", "Korisnik")</li>
