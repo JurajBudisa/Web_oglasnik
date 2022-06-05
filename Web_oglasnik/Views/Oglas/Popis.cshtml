@@ -15,7 +15,7 @@
 
 <h2>Oglasi</h2>
 
-<hr />
+<hr style="border-color:black;"/>
 
 @if (User.Identity.IsAuthenticated)
 {
@@ -58,7 +58,7 @@ else
         Traži
     </button>
 }
-<hr />
+<hr style="border-color:black;"/>
 @{
     Html.RenderAction("PopisPartial", new { naslov = "", stanje = "", marka = "" });
 }

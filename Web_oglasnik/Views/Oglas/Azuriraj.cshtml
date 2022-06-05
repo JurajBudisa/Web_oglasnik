@@ -22,7 +22,7 @@
     @Html.ValidationSummary(true, "Ispravite podatke");
 
 <div class="form-horizontal">
-    <hr />
+    <hr style="border-color:black;"/>
     @{
         string username = Convert.ToString(((User as LogiraniKorisnik).KorisnickoIme));
         Model.KorisnickoIme = username;

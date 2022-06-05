@@ -300,7 +300,6 @@
     <Content Include="Views\Oglas\Brisi.cshtml" />
     <Content Include="Views\Oglas\BrisiStatus.cshtml" />
     <Content Include="Views\Korisnik\Detalji.cshtml" />
-    <Content Include="Views\Korisnik\Azuriraj.cshtml" />
     <Content Include="Views\Oglas\_PartialPopis.cshtml" />
     <Content Include="Views\Korisnik\Index.cshtml" />
     <Content Include="Views\Korisnik\Prijava.cshtml" />

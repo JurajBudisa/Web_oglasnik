@@ -56,7 +56,7 @@ namespace Web_oglasnik.Controllers
                 return View(oglasi);
             }
 
-            int pageSize = 10;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             return PartialView("_PartialPopis", oglasi.ToPagedList(pageNumber, pageSize));
         }
