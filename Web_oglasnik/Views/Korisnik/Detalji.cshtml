@@ -8,7 +8,7 @@
 
 <h2>@Model.KorisnickoIme</h2>
 
-<hr style="border-color:black;"/>
+<hr style="border-color:black;" />
 
 <div class="row">
     <div class="col-md-2">
@@ -47,43 +47,43 @@
 
     <h4>Svi oglasi ovog oglašivača</h4>
 
-        foreach (Oglas oglas in Model.Oglas)
+    foreach (Oglas oglas in Model.Oglas)
+    {
+        <hr style="border-color:black;" />
+
+        <h3>@Html.ActionLink(oglas.Naslov, "Detalji", "Oglas", new { id = oglas.ID }, null)</h3>
+
+        <br />
+
+        <strong>Marka:&nbsp;</strong>
+        @oglas.Marka
+
+        <br />
+
+        <strong>Stanje:&nbsp;</strong>
+        if (oglas.Stanje == "N")
         {
-            <hr style="border-color:black;" />
-
-            <h3>@Html.ActionLink(oglas.Naslov, "Detalji", "Oglas", new { id = oglas.ID }, null)</h3>
-
-            <br />
-
-            <strong>Marka:&nbsp;</strong>
-            @oglas.Marka
-
-            <br />
-
-            <strong>Stanje:&nbsp;</strong>
-            if (oglas.Stanje == "N")
-            {
-                <p style="display:inline;">Novo</p>
-            }
-            else
-            {
-                <p style="display:inline;">Rabljeno</p>
-            }
-
-            <br />
-
-            <strong>Godište:&nbsp;</strong>
-            @oglas.Godiste
-
-            <br />
-
-            <strong>Cijena:&nbsp;</strong>
-            @String.Format("{0:N0}", Convert.ToDecimal(oglas.Cijena))
-            <p style="display:inline;">kn</p>
-
-            <br />
-
-            <strong>Objavljen:&nbsp;</strong>
-            @oglas.Datum
+            <p style="display:inline;">Novo</p>
         }
+        else
+        {
+            <p style="display:inline;">Rabljeno</p>
+        }
+
+        <br />
+
+        <strong>Godište:&nbsp;</strong>
+        @oglas.Godiste
+
+        <br />
+
+        <strong>Cijena:&nbsp;</strong>
+        @String.Format("{0:N0}", Convert.ToDecimal(oglas.Cijena))
+        <p style="display:inline;">kn</p>
+
+        <br />
+
+        <strong>Objavljen:&nbsp;</strong>
+        @oglas.Datum
+    }
 }
