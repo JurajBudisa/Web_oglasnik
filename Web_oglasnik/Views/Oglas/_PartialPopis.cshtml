@@ -18,50 +18,44 @@
     }
     else
     {
-        <table>
-            @foreach (Oglas oglas in Model)
+        foreach (Oglas oglas in Model)
+        {
+            <hr style="border-color:black;"/>
+
+            <h3>@Html.ActionLink(oglas.Naslov, "Detalji", new { id = oglas.ID })</h3>
+
+            <br />
+
+            <strong>Marka:&nbsp;</strong>@oglas.Marka
+
+            <br />
+
+            <strong>Stanje:&nbsp;</strong>
+            if (oglas.Stanje == "N")
             {
-                <tr>
-                    <td><h3>@Html.ActionLink(oglas.Naslov, "Detalji", new { id = oglas.ID })</h3></td>
-                </tr>
-
-                <tr>
-                    <td><strong>Marka:</strong></td>
-                    <td>@oglas.Marka</td>
-                </tr>
-
-                <tr>
-                    <td><strong>Stanje:</strong></td>
-                    @if (oglas.Stanje == "N")
-                    {
-                        <td>Novo</td>
-                    }
-                    else
-                    {
-                        <td>Rabljeno</td>
-                    }
-                </tr>
-
-                <tr>
-                    <td><strong>Godište:</strong></td>
-                    <td>@oglas.Godiste.</td>
-                </tr>
-
-                <tr>
-                    <td><strong>Cijena:</strong></td>
-                    <td>@String.Format("{0:N0}", Convert.ToDecimal(oglas.Cijena)) kn </td>
-                </tr>
-
-                <tr>
-                    <td><strong>Objavljen:</strong></td>
-                    <td>@oglas.Datum</td>
-                </tr>
+                <p style="display:inline;">Novo</p>
             }
-        </table>
+            else
+            {
+                <p style="display:inline;">Rabljeno</p>
+            }
+
+            <br />
+
+            <strong>Godište:&nbsp;</strong>@oglas.Godiste
+
+            <br />
+
+            <strong>Cijena:&nbsp;</strong>@String.Format("{0:N0}", Convert.ToDecimal(oglas.Cijena)) <p style="display:inline;">kn</p>
+
+            <br />
+
+            <strong>Objavljen:&nbsp;</strong>@oglas.Datum
+        }
     }
-    <hr style="border-color:black;"/>
+    <hr style="border-color:black;" />
     <div id="pager">
-        Ukupno rezultata: @Model.TotalItemCount </br>
+        Ukupno rezultata: @Model.TotalItemCount <br />
 
         Stranica @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) od @Model.PageCount
 
