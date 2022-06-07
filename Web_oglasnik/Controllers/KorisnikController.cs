@@ -68,7 +68,7 @@ namespace Web_oglasnik.Controllers
                         if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                             return Redirect(returnUrl);
 
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Oglas");
                     }
                 }
             }
@@ -82,7 +82,7 @@ namespace Web_oglasnik.Controllers
         {
             FormsAuthentication.SignOut();
             Session.Abandon();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Oglas");
         }
 
         [HttpGet]
