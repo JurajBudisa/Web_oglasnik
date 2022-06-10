@@ -1,5 +1,6 @@
 ﻿using Web_oglasnik.Misc;
 using Web_oglasnik.Models;
+using Web_oglasnik.Reports;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,17 @@ namespace Web_oglasnik.Controllers
             var listaKorisnika = bazaPOdataka.PopisKorisnika
                 .OrderBy(x => x.SifraOvlasti).ThenBy(x => x.Prezime).ToList();
             return View(listaKorisnika);
+        }
+
+        [AllowAnonymous]
+        public ActionResult IspisKorisnika()
+        {
+            var korisnici = bazaPOdataka.PopisKorisnika.ToList();
+
+            KorisniciReport korisniciReport = new KorisniciReport();
+            korisniciReport.ListaKorisnika(korisnici);
+
+            return File(korisniciReport.Podaci, System.Net.Mime.MediaTypeNames.Application.Pdf, "PopisKorisnika.pdf");
         }
 
         [HttpGet]
